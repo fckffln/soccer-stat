@@ -1,0 +1,8 @@
+<mat-tab-group>
+  <mat-tab label="Competitions ({{ store.competitions?.count || 0 }})">
+    <competitions-data [competitions]="store.competitions?.result || []"></competitions-data>
+  </mat-tab>
+  <mat-tab label="Teams ({{ store.teams?.count || 0 }})">
+    <teams-data [teams]="store.teams?.result || []"></teams-data>
+  </mat-tab>
+</mat-tab-group>

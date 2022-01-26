@@ -1,0 +1,62 @@
+<div class="Table">
+  <div class="Search">
+    <mat-form-field class="Input" appearance="fill">
+      <mat-label>Enter a date range</mat-label>
+      <mat-date-range-input [rangePicker]="picker">
+        <input matStartDate placeholder="Start date" class="startDate" (dateChange)="filteredDateFrom($event)">
+        <input matEndDate placeholder="End date" class="endDate" (dateChange)="filteredDateTo($event)">
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field><mat-icon (click)="clearFilter()">close</mat-icon>
+  </div>
+<table *ngIf="matches?.length" mat-table [dataSource]="matches" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef> Status </th>
+    <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="stage">
+    <th mat-header-cell *matHeaderCellDef> Winner </th>
+    <td mat-cell [style]="{'cursor': type === 'competition' && status(element).id !== null ? 'pointer' : 'default'}"
+        [routerLink]="type === 'competition' && status(element).id !== null ? ['../../team', status(element).id] : []" *matCellDef="let element">
+      {{ type === 'competition' ? status(element).name : status(element) }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef> Date </th>
+    <td mat-cell *matCellDef="let element"> {{ element.utcDate | date: 'dd.MM.yyyy mm:hh' }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="score">
+    <th mat-header-cell *matHeaderCellDef> Score (h:a) </th>
+    <td mat-cell *matCellDef="let element">{{ score(element.score).homeTeam }} - {{ score(element.score).awayTeam }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="attachment">
+    <th mat-header-cell *matHeaderCellDef> Attachment </th>
+    <td mat-cell *matCellDef="let element"> {{ attachment(element) }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="another">
+    <th mat-header-cell *matHeaderCellDef> Another team </th>
+    <td mat-cell [style]="{'cursor': type === 'competition' && anotherTeam(element).id !== null ? 'pointer' : 'default'}"
+        [routerLink]="type === 'competition' && anotherTeam(element).id !== null ? ['../../team', anotherTeam(element).id] : []" *matCellDef="let element">
+      {{ anotherTeam(element).name }}
+    </td>
+  </ng-container>
+
+
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+
+  <div class="Empty" *ngIf="!matches?.length">
+    Nothing founded, please clear your option.
+  </div>
+</div>

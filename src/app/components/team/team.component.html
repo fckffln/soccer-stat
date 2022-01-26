@@ -1,0 +1,43 @@
+<mat-tab-group>
+  <mat-tab *ngIf="store.team as team" label="{{ team.name || 'Team' }}">
+
+    <div class="MainInfo">
+
+      <mat-card class="Card">
+        <mat-card-header>
+          <img class="CardAvatar" mat-card-avatar [src]="team.crestUrl ? team.crestUrl : noPhoto" alt="">
+          <mat-card-title>{{team.name}}</mat-card-title>
+          <mat-card-subtitle>{{team.venue}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image class="CardImage" [src]="team.crestUrl ? team.crestUrl : noPhoto" alt="Crest of team">
+        <mat-card-content>
+          <p><i>Contact info:</i></p>
+          <p *ngIf="team.address as contact">
+            <span>Address</span>
+            <a>{{contact}}</a>
+          </p>
+          <p *ngIf="team.area.name as contact">
+            <span>Area</span>
+            <a>{{contact}}</a>
+          </p>
+          <p *ngIf="team.website as contact">
+            <span>Website</span>
+            <a>{{contact}}</a>
+          </p>
+          <p *ngIf="team.email as contact">
+            <span>Email</span>
+            <a>{{contact}}</a>
+          </p>
+          <p *ngIf="team.phone as contact">
+            <span>Phone</span>
+            <a>{{contact}}</a>
+          </p>
+        </mat-card-content>
+      </mat-card>
+
+      <matches-data *ngIf="team" type="team" [matches]="store.matches?.result || []" [id]="team.id"></matches-data>
+
+    </div>
+
+  </mat-tab>
+</mat-tab-group>

@@ -1,0 +1,43 @@
+<mat-tab-group>
+  <mat-tab *ngIf="store.competition as competition" label="{{ competition.name || 'Competition' }}">
+
+    <div class="MainInfo">
+
+      <mat-card class="Card">
+        <mat-card-header>
+          <img class="CardAvatar" mat-card-avatar [src]="competition.emblemUrl ? competition.emblemUrl : noPhoto" alt="">
+          <mat-card-title>{{competition.name}}</mat-card-title>
+          <mat-card-subtitle>{{competition.code}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image class="CardImage" [src]="competition.emblemUrl ? competition.emblemUrl : noPhoto" alt="Emblem of competition">
+        <mat-card-content>
+          <p><i>Main info:</i></p>
+          <p *ngIf="competition.area.name as info">
+            <span>Area</span>
+            <a>{{info}}</a>
+          </p>
+          <p *ngIf="competition.currentSeason.startDate as info">
+            <span>Start Season</span>
+            <a>{{info}}</a>
+          </p>
+          <p *ngIf="competition.currentSeason.endDate as info">
+            <span>End Season</span>
+            <a>{{info}}</a>
+          </p>
+          <p *ngIf="competition.currentSeason.winner as info">
+            <span>Winner</span>
+            <a>{{info}}</a>
+          </p>
+          <p *ngIf="competition.plan as info">
+            <span>Plan</span>
+            <a>{{info}}</a>
+          </p>
+        </mat-card-content>
+      </mat-card>
+
+      <matches-data *ngIf="competition" type="competition" [matches]="store.matches?.result || []" [id]="competition.id"></matches-data>
+
+    </div>
+
+  </mat-tab>
+</mat-tab-group>

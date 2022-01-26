@@ -1,0 +1,37 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+
+html {
+  overflow: hidden;
+  --background: #292A32;
+  --background-light: rgba(124, 124, 124, 0.84);
+  --white: white;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: var(--background);
+}
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--background-light) var(--background);
+  box-sizing: border-box;
+
+  &::-webkit-scrollbar-track {
+    background: var(--background);
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--background-light) ;
+    border-radius: 6px;
+    border: 3px solid var(--background);
+  }
+  &::-webkit-scrollbar {
+    width: 15px;
+  }
+
+  p {
+    margin: 0 0 1.5em;
+  }
+}

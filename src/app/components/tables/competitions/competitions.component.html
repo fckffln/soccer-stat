@@ -1,0 +1,42 @@
+<div class="Table">
+  <mat-form-field class="Input" appearance="fill">
+    <mat-label>Search</mat-label>
+    <input matInput [(ngModel)]="filter" (ngModelChange)="filtered($event)">
+  </mat-form-field>
+<table mat-table [dataSource]="competitions" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> No. </th>
+    <td mat-cell [routerLink]="['competition', element.id]" *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell [routerLink]="['competition', element.id]" *matCellDef="let element">
+      <div class="Item">
+        <emblem-ui *ngIf="element.emblemUrl !== null" [url]="element.emblemUrl"></emblem-ui>
+        <a>{{element.name }}</a>
+      </div>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="area">
+    <th mat-header-cell *matHeaderCellDef> Area </th>
+    <td mat-cell [routerLink]="['competition', element.id]" *matCellDef="let element"> {{ element.area.name }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="season">
+    <th mat-header-cell *matHeaderCellDef> Season </th>
+    <td mat-cell [routerLink]="['competition', element.id]" *matCellDef="let element">
+      <a *ngIf="element.currentSeason">{{ element.currentSeason.startDate }} - {{ element.currentSeason.endDate }}</a>
+      <a *ngIf="!element.currentSeason">not yet info</a>
+    </td>
+  </ng-container>
+
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+</div>

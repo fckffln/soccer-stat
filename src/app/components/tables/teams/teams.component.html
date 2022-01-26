@@ -1,0 +1,49 @@
+<div class="Table">
+  <mat-form-field class="Input" appearance="fill">
+    <mat-label>Search</mat-label>
+    <input matInput type="text" [(ngModel)]="filter" (ngModelChange)="filtered($event)">
+  </mat-form-field>
+<table mat-table [dataSource]="teams" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> No. </th>
+    <td mat-cell [routerLink]="['team', element.id]" *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell [routerLink]="['team', element.id]" *matCellDef="let element">
+      <div class="Item">
+        <emblem-ui *ngIf="element.crestUrl !== null" [url]="element.crestUrl"></emblem-ui>
+        <a>{{element.name }}</a>
+      </div>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="clubcolors">
+    <th mat-header-cell *matHeaderCellDef> Club Colors </th>
+    <td mat-cell [routerLink]="['team', element.id]" *matCellDef="let element">
+      <a *ngIf="element.clubColors">{{ element.clubColors }}</a>
+      <a *ngIf="!element.clubColors">not yet info</a>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="area">
+    <th mat-header-cell *matHeaderCellDef> Area </th>
+    <td mat-cell [routerLink]="['team', element.id]" *matCellDef="let element"> {{ element.area.name }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="venue">
+    <th mat-header-cell *matHeaderCellDef> Venue </th>
+    <td mat-cell [routerLink]="['team', element.id]" *matCellDef="let element">
+      <a *ngIf="element.venue">{{ element.venue }}</a>
+      <a *ngIf="!element.venue">not yet info</a>
+    </td>
+  </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+</div>
