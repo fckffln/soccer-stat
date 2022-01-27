@@ -14,19 +14,19 @@
              mat-card-image>
         <mat-card-content>
           <p><i>Main info:</i></p>
-          <p *ngIf="competition.area.name as info">
+          <p *ngIf="competition?.area?.name as info">
             <span>Area</span>
             <a>{{info}}</a>
           </p>
-          <p *ngIf="competition.currentSeason.startDate as info">
+          <p *ngIf="competition?.currentSeason?.startDate as info">
             <span>Start Season</span>
             <a>{{info}}</a>
           </p>
-          <p *ngIf="competition.currentSeason.endDate as info">
+          <p *ngIf="competition?.currentSeason?.endDate as info">
             <span>End Season</span>
             <a>{{info}}</a>
           </p>
-          <p *ngIf="competition.currentSeason.winner as info">
+          <p *ngIf="competition?.currentSeason?.winner as info">
             <span>Winner</span>
             <a>{{info}}</a>
           </p>

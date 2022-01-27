@@ -35,13 +35,12 @@ export class MatchesComponent implements OnInit, OnDestroy {
         queryParams: {},
         queryParamsHandling: "",
       }).then();
-    this._service.getMatchesByCompetition(this.id);
+    if (this.type === 'competition') this._service.getMatchesByCompetition(this.id);
+    else this._service.getMatchesByTeam(this.id);
   }
 
   filteredDateTo(e: any) {
     if (this.dateFrom && this.dateFrom > new Date(e.value)) {
-      console.log(this.dateFrom);
-      console.log(new Date(e.value));
       e.value = this.dateTo?.toUTCString();
       return;
     }
@@ -80,7 +79,8 @@ export class MatchesComponent implements OnInit, OnDestroy {
       this.dateFrom = new Date(e.dateFrom);
       options["dateFrom"] = [e.dateFrom, "GET"];
       options["dateTo"] = [e.dateTo, "GET"];
-      this._service.getMatchesByTeam(this.id, options);
+      if (this.type === 'competition') this._service.getMatchesByCompetition(this.id, options);
+      else this._service.getMatchesByTeam(this.id, options);
     });
   }
 
