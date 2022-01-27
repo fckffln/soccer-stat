@@ -2,7 +2,21 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
+    "paths": {
+      "@core/*": ["./app/core/*"],
+      "@services/*": ["./app/core/services/*"],
+      "@ui/*": ["./app/ui/*"],
+      "@lib/*": ["./app/core/library/*"],
+      "@models/*": ["./app/core/models/*"],
+      "@models": ["./app/core/models/index"],
+      "@tables/*": ["./components/tables/*"],
+      "@items/*": ["./components/items/*"],
+      "@errors/*": ["./components/errors/*"],
+      "@environments/*": ["../environments/*"],
+      "@assets/*": ["../assets/*"],
+      "@styles/*": ["./styles/*"]
+    },
+    "baseUrl": "./src",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,

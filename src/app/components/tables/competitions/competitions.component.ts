@@ -1,25 +1,30 @@
-import {AfterContentChecked, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Competition} from "../../../models/competition.model";
-import {FootballService} from "../../../services/football.service";
-import {ActivatedRoute, Params, Router} from "@angular/router";
+import { AfterContentChecked, Component, Input } from "@angular/core";
+import { Competition } from "@models";
+import { FootballService } from "@services/football.service";
+import { ActivatedRoute, Params, Router } from "@angular/router";
 
 @Component({
-  selector: 'competitions-data',
-  templateUrl: './competitions.component.html',
-  styleUrls: ['./competitions.component.scss', '../table.scss']
+  selector: "competitions-data",
+  templateUrl: "./competitions.component.html",
+  styleUrls: ["../tables.scss"],
 })
 export class CompetitionsComponent implements AfterContentChecked {
   @Input() competitions: Competition[] = [];
-  displayedColumns: string[] = ['id', 'name', 'area', 'season'];
+  displayedColumns: string[] = ["id", "name", "area", "season"];
   filter = "";
 
-  constructor(private _service: FootballService, private _route: ActivatedRoute, private _router: Router) {}
+  constructor(private _service: FootballService, private _route: ActivatedRoute, private _router: Router) {
+  }
 
   ngAfterContentChecked() {
-    this.filter = this._route.snapshot.queryParams['cname'];
-    if (this.filter) {
+    this.filter = this._route.snapshot.queryParams["cname"];
+    this.setFilter(this.filter);
+  }
+
+  setFilter(filter: string) {
+    if (filter) {
       const store = this._service.store.competitions!;
-      this.competitions = store?.result.filter(c => c.name.toLowerCase().includes(this.filter.toLowerCase())) || [];
+      this.competitions = store?.result.filter(c => c.name.toLowerCase().includes(filter.toLowerCase())) || [];
       if (store?.count) store.count = this.competitions.length;
     }
   }
@@ -33,8 +38,8 @@ export class CompetitionsComponent implements AfterContentChecked {
         {
           relativeTo: this._route,
           queryParams: queryParams,
-          queryParamsHandling: 'merge'
-        });
+          queryParamsHandling: "merge",
+        }).then();
     }
     this._service.isLoading$.next(true);
     const store = this._service.store.competitions!;
@@ -50,7 +55,7 @@ export class CompetitionsComponent implements AfterContentChecked {
       {
         relativeTo: this._route,
         queryParams: queryParams,
-        queryParamsHandling: 'merge'
-      });
+        queryParamsHandling: "merge",
+      }).then();
   }
 }

@@ -1,5 +1,9 @@
-<p><mat-toolbar><span [routerLink]="''">SoccerStat</span></mat-toolbar></p>
-<div [style]="{'opacity': !(isLoading$ | async) ? 0 : 1}" class="Spin"><mat-spinner></mat-spinner></div>
+<p>
+  <mat-toolbar><span [routerLink]="''">SoccerStat</span></mat-toolbar>
+</p>
+<div [style]="{'opacity': !(isLoading$ | async) ? 0 : 1}" class="Spin">
+  <mat-spinner></mat-spinner>
+</div>
 <div [style]="{'opacity': (isLoading$ | async) ? 0 : 1}">
   <router-outlet></router-outlet>
 </div>

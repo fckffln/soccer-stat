@@ -1,0 +1,37 @@
+.Table {
+  max-height: calc(100vh - 49px);
+  min-width: 480px;
+  margin: 49px 200px -50px 200px;
+
+  .Input {
+    width: 100%;
+    color: white;
+  }
+
+  table {
+    margin-top: 25px;
+    width: 100%;
+  }
+
+  tr:hover {
+    opacity: 0.5;
+    cursor: pointer;
+
+    &:only-child {
+      opacity: 1;
+      cursor: inherit;
+    }
+  }
+
+  .Item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .mat-table {
+    background: #3f4047;
+  }
+}
+
+@import "src/app/styles/adaptive";

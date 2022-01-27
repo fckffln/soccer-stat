@@ -1,16 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import {FootballService} from "../../services/football.service";
+import { Component, OnInit } from "@angular/core";
+import { FootballService } from "@services/football.service";
 
 @Component({
-  selector: 'app-tables',
-  templateUrl: './tables.component.html',
-  styleUrls: ['./tables.component.scss']
+  selector: "app-tables",
+  templateUrl: "./tables.component.html",
+  styleUrls: ["./tables.scss"],
 })
 export class TablesComponent implements OnInit {
 
-  get store() {return this._service.store}
+  constructor(private _service: FootballService) {
+  }
 
-  constructor(private _service: FootballService) {}
+  get store() {
+    return this._service.store;
+  }
 
   ngOnInit() {
     this._service.getCompetitions();

@@ -1,0 +1,30 @@
+::ng-deep .mat-tab-labels {
+  display: flex;
+  justify-content: center;
+}
+
+::ng-deep .mat-calendar {
+  background: #3f4047;
+}
+
+p {
+  width: 7vw;
+  margin: 0;
+
+  * {
+    width: 7vw;
+  }
+}
+
+::ng-deep .mat-toolbar {
+  background: inherit;
+  position: absolute;
+  z-index: 2;
+  width: 7vw;
+  height: 49px;
+  margin: 0;
+
+  span {
+    cursor: pointer;
+  }
+}

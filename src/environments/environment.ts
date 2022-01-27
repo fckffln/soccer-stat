@@ -4,10 +4,10 @@
 
 export const environment = {
   production: false,
-  api: 'https://api.football-data.org/',
-  token: '33c19fe74a4b40a6b118469733e033f2',
-  lastUri: '',
-  noPhoto: 'https://www.samsung.com/etc.clientlibs/samsung/clientlibs/consumer/global/clientlib-common/resources/images/img_support_no_result_mo.png',
+  api: "https://api.football-data.org/",
+  token: "33c19fe74a4b40a6b118469733e033f2",
+  lastUri: "",
+  noPhoto: "https://www.samsung.com/etc.clientlibs/samsung/clientlibs/consumer/global/clientlib-common/resources/images/img_support_no_result_mo.png",
 };
 
 /*
