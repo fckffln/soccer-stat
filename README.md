@@ -1,27 +1,32 @@
-# TestAngularApp
+# Входное тестовое задание Frontend. Приложение SoccerStat
+## Необходимо:
+Разработать приложение/web страницу для просмотра спортивной статистики.
+## Требования к заданию:
+### Обязательные технологии: 
+Фреймворк Angular
+### Допускается использовать: 
+Любые UI библиотеки (Оценивается рациональность выбора)
+### Основные требования:
+Приложение должно представлять из себя сайт просмотра статистики ведущих
+европейских турниров по футболу.
+### Обязательные страницы:
+- Список лиг/соревнований
+- Список команд
+- Календарь лиги - список матчей лиги/соревнования
+- Календарь одной команды - список матчей команды
+На страницах календаря можно указать фильтр по дате (с, по)
+На страницах списка можно найти сущность по текстовому поиску.
+После обновления страницы данные (год, команда, поисковой запрос) должны
+сохраняться, т.е. параметры должны быть отображены в адресной строке
+(роутинг либо GET параметры)
+В качестве публичного API для получения данных рекомендуется использовать
+https://www.football-data.org/. Это API содержит ограничения на бесплатном
+тарифе, пользователю необходимо корректно сообщать о том, что данные не
+получены. Кандидат может использовать любое другое API при условии, что
+оно позволит получить необходимые для выполнения задания данные.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.4.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Категории оценки:
+- функционал (удобство интерфейса, полнота выполнения пунктов ТЗ)
+- верстка (корректность отображения в браузере, наличие адаптивной версии)
+- код (чистота кода, рациональность использования библиотек, уровень
+проработки архитектуры)
